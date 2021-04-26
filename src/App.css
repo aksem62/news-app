@@ -18,6 +18,9 @@ body {
   width: 45em;
 }
 .news-card {
+  display: grid;
+  gap: 3px;
+  grid-template-columns: repeat(6, 1fr);
   padding: 1em;
   list-style-type: none;
   border-radius: 6px;
@@ -26,10 +29,12 @@ body {
   box-shadow: 0px 2px 6px 2px #0002;
 }
 .news-card-title {
+  grid-column: 1/-1;
   font-weight: 700;
   font-size: large;
 }
 .news-card-description {
+  grid-column: 1/6;
   padding-top: 1em;
   font-weight: 400;
   font-size: small;
@@ -77,4 +82,14 @@ label {
 .btn:active {
   position: relative;
   top: 1px;
+}
+.thumbnail {
+  grid-column: 6/7;
+  box-shadow: 0px 1px 1px 1px #0002;
+  border-radius: 6px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-bottom: 5pxm;
+  width: 150px;
+  height: auto;
 }

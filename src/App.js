@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
+import NewsCard from "./components/NewsCard";
 import "./App.css";
 
 const App = () => {
@@ -55,12 +56,13 @@ const App = () => {
         {!isLoading ? (
           <div className="news-block">
             {news.articles.map((article) => (
-              <div key={uuidv4()} className="news-card">
-                <div className="news-card-title">{article.title}</div>
-                <div className="news-card-description">
-                  {article.description}
-                </div>
-              </div>
+              // <div key={uuidv4()} className="news-card">
+              //   <div className="news-card-title">{article.title}</div>
+              //   <div className="news-card-description">
+              //     {article.description}
+              //   </div>
+              // </div>
+              <NewsCard key={uuidv4()} article={article} />
             ))}
           </div>
         ) : (
