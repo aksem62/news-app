@@ -1,38 +1,43 @@
-.App {
+html,
+body {
+  box-sizing: border-box;
+}
+.container {
+  display: grid;
+  grid-template-columns: 60px 2fr 1fr 60px;
+  grid-template-rows: auto;
+  gap: 1em;
+}
+.heading {
+  grid-column: 1/-1;
   text-align: center;
+  background-color: rgb(172, 206, 149);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.news-block {
+  grid-column: 2;
+  width: 45em;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.news-card {
+  padding: 1em;
+  list-style-type: none;
+  border-radius: 6px;
+  margin-bottom: 1em;
+  background: #fff;
+  box-shadow: 0px 2px 6px 2px #0002;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.news-card-title {
+  font-weight: 700;
+  font-size: large;
 }
-
-.App-link {
-  color: #61dafb;
+.news-card-description {
+  padding-top: 1em;
+  font-weight: 400;
+  font-size: small;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form {
+  grid-column: 2;
+}
+.loading {
+  font-size: xx-large;
+  grid-column: 2;
 }
