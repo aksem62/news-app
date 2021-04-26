@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import { AwesomeButton } from "react-awesome-button";
 import "./App.css";
-import "react-awesome-button/dist/themes/theme-blue.css";
 
 const App = () => {
   const [news, setNews] = useState({ articles: [] });
   const [quest, setQuest] = useState("COVID");
-  const [submitted, setSubmitted] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   useEffect(() => {
     const fetchNews = async () => {
       setIsLoading(true);
-      const result = await axios(
-        `https://newsapi.org/v2/top-headlines?q=${quest}&apiKey=${process.env.REACT_APP_API_KEY}`
-      );
+      setIsError(false);
+      try {
+        const result = await axios(
+          `https://newsapi.org/v2/top-headlines?q=${quest}&apiKey=${process.env.REACT_APP_API_KEY}`
+        );
+        setNews(result.data);
+      } catch (error) {
+        setIsError(true);
+      }
       setIsLoading(false);
-      setNews(result.data);
     };
     submitted && fetchNews();
   }, [quest, submitted]);
@@ -43,8 +47,11 @@ const App = () => {
               setQuest(e.target.value);
             }}
           />
-          <AwesomeButton type="primary">Search</AwesomeButton>
+          <button className="btn" type="submit">
+            Search
+          </button>
         </form>
+        {isError && <div className="on-error">Something went wrong ...</div>}
         {!isLoading ? (
           <div className="news-block">
             {news.articles.map((article) => (
