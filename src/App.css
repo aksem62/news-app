@@ -11,7 +11,7 @@ body {
 .heading {
   grid-column: 1/-1;
   text-align: center;
-  background-color: rgb(172, 206, 149);
+  background-color: rgb(116, 161, 182);
 }
 .news-block {
   grid-column: 2;
@@ -36,8 +36,26 @@ body {
 }
 form {
   grid-column: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-content: center;
+  justify-items: center;
+  gap: 1em;
+}
+label {
+  justify-content: center;
+  padding-top: 1em;
 }
 .loading {
   font-size: xx-large;
   grid-column: 2;
 }
+/* button {
+  background: #17f;
+  color: #fff;
+  font: inherit;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  padding: 0.5em 1.5em;
+} */
